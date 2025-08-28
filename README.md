@@ -17,6 +17,4 @@ Features :
 
 Support me for develop another some useful tools, thank you 🙏🏻.
 
-Donate to 👇🏻
-
-3Lohsw5zSFaTozV5a875zE4SXRVLXAiqnP
+Donate to 3Lohsw5zSFaTozV5a875zE4SXRVLXAiqnP
