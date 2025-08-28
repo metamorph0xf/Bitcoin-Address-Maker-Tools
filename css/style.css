@@ -1,0 +1,86 @@
+html,
+body {
+	height: 100%;
+}
+
+body {
+	background-color: #57555fcc;
+	background-image: url("../images/background.jpg");
+	background-blend-mode: overlay;
+}
+
+p {
+	text-align: justify;
+}
+
+.glyphicon-info-sign {
+	float: left;
+	margin-right: 5px;
+}
+
+#modalDecryptingLink {
+	display: block;
+	overflow: hidden;
+}
+
+abbr {
+	text-align: justify;
+	font-size: 12px;
+}
+
+.displaynone {
+	display: none;
+}
+
+#wifStatus,
+#brainwalletStatus,
+#aes256passStatus,
+#pubKeyCointainer,
+#wifContainer,
+#aes256wifkey,
+#aes256passform {
+	margin-top: 10px;
+}
+
+#wifStatus {
+	max-width: 100%;
+}
+
+#decryptBtn {
+	margin-bottom: 10px;
+}
+
+#addrContainer,
+#pubKeyCointainer,
+#wifContainer,
+#aes256wifkey {
+	width: 100%;
+	max-width: 1050px;
+}
+
+#brainwalletWrapper {
+	width: 100%;
+	max-width: 600px;
+}
+
+#aes256passform {
+	width: 100%;
+	max-width: 450px;
+}
+
+#wrap {
+	min-height: 100%;
+	height: auto;
+	margin: 0 auto -60px;
+	padding: 0 0 60px;
+}
+
+.alert {
+	width: 100%;
+	max-width: 500px;
+	overflow: hidden;
+	-ms-text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+	display: block;
+}

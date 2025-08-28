@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Bitcoin Address(P2PKH) Maker</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" />
+    <link rel="stylesheet" href="css/style.css" media="screen" />
+    <link rel="stylesheet" href="css/all.min.css" media="screen" />
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="content" class="container">
+        <div id="tab-content">
+          <div class="tab-pane tab-content" id="newAddress">
+            <h2>
+              Bitcoin Address Maker Tools
+              <small>Format Base58 (P2PKH)</small>
+            </h2>
+
+            <div class="row">
+              <div class="col-md-8">
+                <p>
+                  This tools using JavaScript to generate bitcoin address on
+                  your browser, if you worry about Private key (WIF) will be
+                  expose, just run it offline. Keep the Private key (WIF) safely
+                  as possible, cause if anyone now the Private key (WIF) from
+                  bitcoin address that you generate, they can access your
+                  address and stole your bitcoin.
+                </p>
+              </div>
+
+              <div class="col-md-3">
+                <p class="alert alert-info">
+                  <span class="glyphicon glyphicon-info-sign"></span>
+                  <a href="#" id="modalDecryptingLink"
+                    ><abbr
+                      >Decrypting Private key (WIF) that Encrypted by AES-256
+                      Algorithm</abbr
+                    ></a
+                  >
+                </p>
+              </div>
+
+              <div class="col-md-1"></div>
+            </div>
+
+            <label>Address (P2PKH)</label>
+
+            <div class="input-group" id="addrContainer">
+              <input
+                id="newBitcoinAddress"
+                type="text"
+                class="form-control address"
+                value=""
+                readonly
+              />
+              <span class="input-group-btn">
+                <button class="qrcodeBtn btn btn-default" type="button">
+                  <span class="glyphicon glyphicon-qrcode"></span>
+                </button>
+              </span>
+            </div>
+
+            <div id="pubKeyCointainer">
+              <label>Public key</label>
+              <input
+                id="newPubKey"
+                type="text"
+                class="form-control"
+                value=""
+                readonly
+              />
+            </div>
+
+            <div id="wifContainer">
+              <label>Private key (WIF)</label>
+              <div class="input-group">
+                <input
+                  id="newPrivKey"
+                  type="password"
+                  class="form-control privkey-field"
+                  value=""
+                  readonly
+                />
+                <span class="input-group-btn">
+                  <button
+                    class="copyKey btn btn-default"
+                    type="button"
+                    title="Copy Private key (WIF)"
+                  >
+                    <i class="fa fa-clipboard"></i>
+                  </button>
+                </span>
+              </div>
+            </div>
+
+            <div id="aes256wifkey" class="hidden">
+              <label>Encrypted Private key (WIF)</label>
+              <input
+                id="newPrivKeyEnc"
+                type="text"
+                class="form-control"
+                value=""
+                readonly
+              />
+            </div>
+
+            <h3>Address Options</h3>
+            <p>
+              You can use the advanced options below to generate different kind
+              of keys and addresses.
+            </p>
+            <div class="chekbox">
+              <label
+                ><input
+                  type="checkbox"
+                  id="newCompressed"
+                  class="checkbox-inline"
+                  checked
+                />
+                Compress <span class="text-muted">(recommended)</span></label
+              >
+            </div>
+
+            <div class="checkbox">
+              <label
+                ><input
+                  type="checkbox"
+                  id="newBrainwallet"
+                  class="checkbox-inline"
+                />
+                Custom Seed or Brain Wallet</label
+              >
+            </div>
+
+            <div id="brainwalletWrapper" class="hidden">
+              <input
+                type="text"
+                class="form-control"
+                id="brainwallet"
+                placeholder="Enter your Custom seed or Brain Wallet"
+              />
+
+              <div id="brainwalletStatus" class="hidden">
+                <div class="alert alert-danger"></div>
+              </div>
+            </div>
+
+            <div class="checkbox">
+              <label
+                ><input
+                  type="checkbox"
+                  id="encryptKey"
+                  class="checkbox-inline"
+                />
+                Encrypt Private key (WIF) with AES-256 Algorithm</label
+              >
+              <div id="aes256passform" class="row hidden">
+                <div class="col-md-6">
+                  <div class="input-group">
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="aes256pass"
+                      placeholder="Password"
+                    />
+                    <span class="input-group-btn">
+                      <button
+                        class="toggle-password btn btn-default"
+                        type="button"
+                        data-target="#aes256pass"
+                        data-toggle="tooltip"
+                        title="Show Password"
+                      >
+                        <i class="fa fa-eye"></i>
+                      </button>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="input-group">
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="aes256pass_confirm"
+                      placeholder="Confirm Password"
+                    />
+                    <span class="input-group-btn">
+                      <button
+                        class="toggle-password btn btn-default"
+                        type="button"
+                        data-target="#aes256pass_confirm"
+                        data-toggle="tooltip"
+                        title="Show Password"
+                      >
+                        <i class="fa fa-eye"></i>
+                      </button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div id="aes256passStatus" class="row hidden">
+                <div class="col-md-12">
+                  <div class="alert alert-danger"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="btn-group">
+              <input
+                type="button"
+                class="btn btn-primary"
+                value="Generate"
+                id="newKeysBtn"
+              />
+              <button
+                type="button"
+                class="btn btn-primary dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="#" id="newPaperwalletBtn">Print</a></li>
+              </ul>
+            </div>
+            <br />
+          </div>
+        </div>
+        <br />
+        <p>
+          Support me for develop another some useful tools, thank you 🙏🏻. Donate
+          to
+          <a href="bitcoin:3Lohsw5zSFaTozV5a875zE4SXRVLXAiqnP"
+            >3Lohsw5zSFaTozV5a875zE4SXRVLXAiqnP</a
+          >
+        </p>
+        <br />
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="modalQrcode"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="myModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">QR Code</h4>
+          </div>
+
+          <div class="modal-body" align="center">
+            <div id="qrcode"></div>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-default"
+              data-dismiss="modal"
+              id="qrCodeClose"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="modalDecrypting"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="myModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title">Decrypting Private key (WIF)</h3>
+          </div>
+
+          <div class="modal-body">
+            <h5>
+              Decrypting Private key (WIF) that Encrypted using AES-256
+              Algorithm
+            </h5>
+            <div class="row">
+              <div class="col-md-8">
+                <label>Encrypted Private key (WIF) :</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="wifEncrypted"
+                  placeholder="Encrypted Private key (WIF)"
+                />
+              </div>
+
+              <br />
+              <div class="col-md-8">
+                <label>Password :</label>
+                <div class="input-group">
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="passAes256"
+                    placeholder="Password"
+                  />
+                  <span class="input-group-btn">
+                    <button
+                      class="toggle-password btn btn-default"
+                      type="button"
+                      data-target="#passAes256"
+                      data-toggle="tooltip"
+                      title="Show Password"
+                    >
+                      <i class="fa fa-eye"></i>
+                    </button>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <br />
+            <button type="button" class="btn btn-primary" id="decryptBtn">
+              Decrypting
+            </button>
+            <div class="input-group">
+              <input
+                id="outputWif"
+                type="password"
+                class="output form-control privkey-field"
+                value=""
+                readonly
+              />
+              <span class="input-group-btn">
+                <button
+                  class="copyKey btn btn-default"
+                  type="button"
+                  title="Copy Private key (WIF)"
+                >
+                  <i class="fa fa-clipboard"></i>
+                </button>
+              </span>
+            </div>
+            <div
+              class="output alert"
+              id="wifStatus"
+              tabindex="-1"
+              role="alert"
+            ></div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-default"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" src="js/transition.js"></script>
+  <script type="text/javascript" src="js/collapse.js"></script>
+
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+  <script type="text/javascript" src="js/crypto-min.js"></script>
+  <script type="text/javascript" src="js/crypto-sha256.js"></script>
+  <script type="text/javascript" src="js/crypto-sha256-hmac.js"></script>
+  <script type="text/javascript" src="js/sha512.js"></script>
+  <script type="text/javascript" src="js/ripemd160.js"></script>
+  <script type="text/javascript" src="js/aes.js"></script>
+
+  <script type="text/javascript" src="js/qrcode.js"></script>
+  <script type="text/javascript" src="js/qcode-decoder.min.js"></script>
+  <script type="text/javascript" src="js/jsbn.js"></script>
+  <script type="text/javascript" src="js/ellipticcurve.js"></script>
+
+  <script type="text/javascript" src="js/metamorph.js"></script>
+  <script type="text/javascript" src="js/metamorph0xf.js"></script>
+</html>
