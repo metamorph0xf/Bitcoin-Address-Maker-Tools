@@ -1,2 +1,18 @@
 # Bitcoin-Address-Maker-Tools
-Bitcoin Address Maker using JavaScript
+Bitcoin Address(P2PKH) Maker
+
+Tools For Create Bitcoin Address format (P2PKH) using JavaScript. Version 1.0 by Metamorph0xf
+
+Features :
+1. Compress Public Key to (33 bytes), uncompressed (65 bytes).
+   why should be compress =
+    a. Storage efficiency : Smaller, space saving.
+    b. Transmission speed : Faster sent in the network.
+    c. Modern compatibility : Many new wallets and protocols (such as SegWit) require a compressed format.
+2. Custom Seed or Brain Wallet.
+3. Encrypt Private key (WIF) using AES-256 Algorithm.
+4. Decrypting Private key (WIF) that Encrypted using AES-256 Algorithm.
+
+Support me for develop another some useful tools, thank you 🙏🏻.
+Donate to 👇🏻
+3Lohsw5zSFaTozV5a875zE4SXRVLXAiqnP
