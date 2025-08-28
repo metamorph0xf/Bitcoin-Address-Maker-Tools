@@ -12,7 +12,7 @@ Features :
 4. Encrypt Private key (WIF) using AES-256 Algorithm.
 5. Decrypting Private key (WIF) that Encrypted using AES-256 Algorithm.
 
-    <li>Support me for develop another some useful tools, thank you 🙏🏻.</li>
-    <li>Donate to 👇🏻</li>
-    <li>3Lohsw5zSFaTozV5a875zE4SXRVLXAiqnP</li>
 
+Support me for develop another some useful tools, thank you 🙏🏻./
+Donate to 👇🏻 /
+3Lohsw5zSFaTozV5a875zE4SXRVLXAiqnP
