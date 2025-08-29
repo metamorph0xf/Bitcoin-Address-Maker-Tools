@@ -1,7 +1,7 @@
-# Bitcoin-Address-Maker-Tools
-Bitcoin Address(P2PKH) Maker
+# Bitcoin-Address-Generator
+Bitcoin Address(P2PKH) Generator Tools
 
-Tools For Create Bitcoin Address format (P2PKH) using JavaScript. Version 1.1 by Metamorph0xf
+This Tools For Create Bitcoin Address format (P2PKH) using JavaScript. Version 1.1 by Metamorph0xf
 
 Features :
 1. Compress Public Key to (33 bytes), uncompressed (65 bytes).
